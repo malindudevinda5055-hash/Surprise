@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>A Little Surprise ❤️</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow: hidden;
+
+            font-family: "Arial", sans-serif;
+
+            background:
+                radial-gradient(circle at top,
+                #fff0f6,
+                #ffd6e7 45%,
+                #ffb6d2);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            color: #7a1645;
+        }
+
+
+        /* -------------------------
+           FIRST SCREEN
+        ------------------------- */
+
+        #startScreen {
+            position: fixed;
+
+            inset: 0;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            z-index: 10;
+
+            transition: opacity 1s ease;
+        }
+
+
+        #startScreen h1 {
+
+            font-size: 42px;
+
+            margin-bottom: 25px;
+
+            animation: pulse 1.8s infinite;
+        }
+
+
+        #tapButton {
+
+            border: none;
+
+            background: #ff4f91;
+
+            color: white;
+
+            padding: 18px 35px;
+
+            border-radius: 50px;
+
+            font-size: 22px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 10px 30px rgba(255, 50, 130, 0.35);
+
+            transition: transform 0.3s,
+                        box-shadow 0.3s;
+        }
+
+
+        #tapButton:hover {
+
+            transform: scale(1.08);
+
+            box-shadow:
+                0 15px 40px rgba(255, 50, 130, 0.5);
+        }
+
+
+        #tapButton:active {
+
+            transform: scale(0.95);
+        }
+
+
+        /* -------------------------
+           SURPRISE SCREEN
+        ------------------------- */
+
+        #surprise {
+
+            display: none;
+
+            position: relative;
+
+            width: 100%;
+
+            height: 100vh;
+
+            justify-content: center;
+
+            align-items: center;
+
+            flex-direction: column;
+
+            z-index: 2;
+        }
+
+
+        #flowers {
+
+            font-size: 120px;
+
+            animation:
+                flowerAppear 2s ease forwards,
+                flowerFloat 3s ease-in-out 2s infinite;
+
+            opacity: 0;
+        }
+
+
+        #message {
+
+            margin-top: 20px;
+
+            font-size: 30px;
+
+            font-weight: bold;
+
+            max-width: 90%;
+
+            line-height: 1.5;
+
+            opacity: 0;
+
+            animation: messageAppear 2s ease 1s forwards;
+        }
+
+
+        #smallMessage {
+
+            margin-top: 15px;
+
+            font-size: 18px;
+
+            color: #a52a5f;
+
+            opacity: 0;
+
+            animation: messageAppear 2s ease 2s forwards;
+        }
+
+
+        /* -------------------------
+           HEARTS
+        ------------------------- */
+
+        .heart {
+
+            position: fixed;
+
+            bottom: -50px;
+
+            font-size: 25px;
+
+            pointer-events: none;
+
+            animation: heartFloat linear forwards;
+
+            z-index: 1;
+        }
+
+
+        /* -------------------------
+           ANIMATIONS
+        ------------------------- */
+
+        @keyframes pulse {
+
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.08);
+            }
+        }
+
+
+        @keyframes flowerAppear {
+
+            0% {
+                opacity: 0;
+
+                transform:
+                    scale(0.2)
+                    translateY(100px);
+            }
+
+            70% {
+                opacity: 1;
+
+                transform:
+                    scale(1.15)
+                    translateY(-10px);
+            }
+
+            100% {
+                opacity: 1;
+
+                transform:
+                    scale(1)
+                    translateY(0);
+            }
+        }
+
+
+        @keyframes flowerFloat {
+
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+
+        @keyframes messageAppear {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(30px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        @keyframes heartFloat {
+
+            0% {
+
+                transform:
+                    translateY(0)
+                    rotate(0deg)
+                    scale(0.8);
+
+                opacity: 0;
+            }
+
+            10% {
+
+                opacity: 1;
+            }
+
+            100% {
+
+                transform:
+                    translateY(-110vh)
+                    rotate(360deg)
+                    scale(1.4);
+
+                opacity: 0;
+            }
+        }
+
+
+        /* -------------------------
+           MOBILE
+        ------------------------- */
+
+        @media (max-width: 600px) {
+
+            #startScreen h1 {
+
+                font-size: 32px;
+            }
+
+
+            #tapButton {
+
+                font-size: 19px;
+
+                padding: 15px 28px;
+            }
+
+
+            #flowers {
+
+                font-size: 90px;
+            }
+
+
+            #message {
+
+                font-size: 24px;
+            }
+
+
+            #smallMessage {
+
+                font-size: 16px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         FIRST SCREEN
+    ========================== -->
+
+    <div id="startScreen">
+
+        <h1>
+            👀
+        </h1>
+
+        <button id="tapButton">
+            Tap here 💗
+        </button>
+
+    </div>
+
+
+
+    <!-- =========================
+         SURPRISE
+    ========================== -->
+
+    <div id="surprise">
+
+
+        <!-- Bouquet -->
+
+        <div id="flowers">
+            💐
+        </div>
+
+
+        <!-- Main message -->
+
+        <div id="message">
+
+            Honestly, I think I'm starting
+            to like you a little too much... ❤️
+
+        </div>
+
+
+        <!-- Small message -->
+
+        <div id="smallMessage">
+
+            And the funny part is...
+            I'm not even trying to stop it. 🥰
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =========================
+         AUDIO
+    ========================== -->
+
+    <audio id="voice">
+
+        <source src="voice.mp3"
+                type="audio/mpeg">
+
+        Your browser does not support audio.
+
+    </audio>
+
+
+
+    <script>
+
+
+        const tapButton =
+            document.getElementById("tapButton");
+
+        const startScreen =
+            document.getElementById("startScreen");
+
+        const surprise =
+            document.getElementById("surprise");
+
+        const voice =
+            document.getElementById("voice");
+
+
+
+        tapButton.addEventListener("click", function() {
+
+
+            /* -------------------------
+               Hide first screen
+            ------------------------- */
+
+            startScreen.style.opacity = "0";
+
+
+            setTimeout(function() {
+
+                startScreen.style.display = "none";
+
+                surprise.style.display = "flex";
+
+            }, 700);
+
+
+
+            /* -------------------------
+               Play recorded voice
+            ------------------------- */
+
+            voice.play().catch(function(error) {
+
+                console.log(
+                    "Audio could not play:",
+                    error
+                );
+
+            });
+
+
+
+            /* -------------------------
+               Start hearts
+            ------------------------- */
+
+            createHearts();
+
+        });
+
+
+
+        function createHearts() {
+
+
+            const heartSymbols = [
+                "💗",
+                "💕",
+                "💖",
+                "💓",
+                "❤️",
+                "💞"
+            ];
+
+
+            setInterval(function() {
+
+
+                const heart =
+                    document.createElement("div");
+
+
+                heart.classList.add("heart");
+
+
+                heart.innerHTML =
+                    heartSymbols[
+                        Math.floor(
+                            Math.random() *
+                            heartSymbols.length
+                        )
+                    ];
+
+
+                heart.style.left =
+                    Math.random() * 100 + "vw";
+
+
+                heart.style.animationDuration =
+                    (4 + Math.random() * 4) + "s";
+
+
+                heart.style.fontSize =
+                    (18 + Math.random() * 25) + "px";
+
+
+                document.body.appendChild(heart);
+
+
+
+                setTimeout(function() {
+
+                    heart.remove();
+
+                }, 8000);
+
+
+            }, 500);
+
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>
